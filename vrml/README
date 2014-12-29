@@ -1,0 +1,11 @@
+
+See
+
+   http://www.siggraph.org//~rhyne/com97/vrmlexample1.html
+
+To view a file run as follows:
+
+   vrml_viewer  vrml_test.wrl 
+
+executable vrml_viewer is part of appsPA set.
+
