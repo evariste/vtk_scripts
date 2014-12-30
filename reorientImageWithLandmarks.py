@@ -10,6 +10,7 @@ from numpy.ma.core import fabs
 sys.path.append('/Users/paulaljabar/Python/nibabel-1.3.0-py2.7.egg')
 sys.path.append('/Users/paulaljabar/Python')
 
+import geometryUtilsPA as geompa
 import imageUtilsPythonPA as impa
 
 import nibabel as nib
@@ -221,13 +222,13 @@ the target and the original image is the source"
   eyeVec = allPts1[:,2] - allPts1[:,3]
   v = np.copy(eyeVec)
   v[2] = 0
-  theta = impa.angleBetweenVectors(eyeVec, v)
+  theta = geompa.angleBetweenVectors(eyeVec, v)
   ax = np.cross(eyeVec[0:3], v[0:3])
   
   if np.array_equal(ax, [0,0,0]):
     R = np.eye(3)
   else:
-    R = impa.rotationGivenAxisAndAngle(ax, theta)
+    R = geompa.rotationGivenAxisAndAngle(ax, theta)
   
   R1 = np.eye(4)
   R1[0:3,0:3] = R
@@ -240,7 +241,7 @@ the target and the original image is the source"
 
   v = np.zeros( (4,) )
   v[0] = 1
-  theta = impa.angleBetweenVectors(eyeVec2, v)
+  theta = geompa.angleBetweenVectors(eyeVec2, v)
   
   if theta > np.pi / 2.0:
     v[0] = -1
@@ -251,7 +252,7 @@ the target and the original image is the source"
   if np.array_equal(ax, [0,0,0]):
     R = np.eye(3)
   else:
-    R = impa.rotationGivenAxisAndAngle(ax, theta)
+    R = geompa.rotationGivenAxisAndAngle(ax, theta)
   
   R2 = np.eye(4)
   R2[0:3,0:3] = R
@@ -285,7 +286,7 @@ the target and the original image is the source"
 
   for j in range(len(thetas)):
     theta = thetas[j]
-    R = impa.rotationGivenAxisAndAngle(eyeVec3[0:3], theta)
+    R = geompa.rotationGivenAxisAndAngle(eyeVec3[0:3], theta)
     R3[0:3,0:3] = R
     temp = np.dot(R3, stemVec3)
     scores[j] = np.dot(temp, v)
@@ -293,7 +294,7 @@ the target and the original image is the source"
 
   j = np.argmax(scores)
   theta = thetas[j]
-  R = impa.rotationGivenAxisAndAngle(eyeVec3[0:3], theta)
+  R = geompa.rotationGivenAxisAndAngle(eyeVec3[0:3], theta)
   R3[0:3,0:3] = R
   
   allPts4 = np.dot(R3, allPts3)
