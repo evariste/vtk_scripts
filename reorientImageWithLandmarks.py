@@ -9,6 +9,8 @@ from numpy.ma.core import fabs
 
 sys.path.append('/Users/paulaljabar/Python/nibabel-1.3.0-py2.7.egg')
 sys.path.append('/Users/paulaljabar/Python')
+sys.path.append('/Users/paulaljabar/work/scripts/python')
+
 
 import geometryUtilsPA as geompa
 import imageUtilsPythonPA as impa
