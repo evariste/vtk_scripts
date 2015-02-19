@@ -1,4 +1,7 @@
 
+# TODO: Include an option to add slices to the input field of view so
+# that the rotations do not end up pushing part of the anatomy
+# 'outside' during re-orientation.
 
 
 import sys, os
@@ -264,7 +267,8 @@ the target and the original image is the source"
 
   
   ##########################################################
-  print 'Now trying to make stem vector as close to vertical as possible (incorporating tilt angle in direction of +y).\n'
+  print ('Now trying to make stem vector as close to vertical ' + 
+         'as possible (incorporating tilt angle in direction of +y).\n')
   
   # Now carry out a rotation about the current vector between the eyes. The
   # rotation should make the stem vector from bottom to top point as much
