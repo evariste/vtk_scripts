@@ -12,14 +12,24 @@ import nibabel as nib
 import numpy
 
 
-def usage():
-  print "Usage: "
+def usage(scriptName):
+  print '''Usage: '
+
+  vtkpython ''',
+  print  scriptName,
+  print ''' [image-input] [polydata-output]
+
+Identify the boundary voxels between 0 and postive voxels in the input image.
+
+Render a cube at each of the voxels and save the result in a polydata output file.
+'''
+
   exit()
 
 
 def main(*args):
   if len(args) < 3:
-     usage()
+     usage(args[0])
 
   inputFileName = args[1]
   outputFileName = args[2]
@@ -86,11 +96,11 @@ def main(*args):
   boundaryVoxels = imgData - erodedData
   bdryInds = numpy.where(boundaryVoxels > 0) 
 
-#  newImg = nib.Nifti1Image(erodedData, aff)
-#  nib.save(newImg, 'bla.nii.gz')
 
-  ijk1 = numpy.vstack(bdryInds)
-  
+  ijk1 = numpy.vstack(bdryInds[0:3])
+  # Convert to homogeneous coordinates
+  ijk1 = numpy.vstack( (ijk1, numpy.ones(bdryInds[3].shape)) )
+
   for n in range(ijk1.shape[1]):
     x,y,z,w = numpy.dot(aff, ijk1[:, n])
     pts.InsertNextPoint(x,y,z)
