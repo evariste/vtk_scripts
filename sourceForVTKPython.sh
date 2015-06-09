@@ -7,7 +7,7 @@ vtkBuildDir="/Users/paulaljabar/work/packages/vtk/build-5.10.1-64"
 
 export PATH=${vtkBuildDir}/bin:${PATH}
 
-export PYTHONPATH=${vtkBuildDir}/Wrapping/Python/:${vtkBuildDir}/bin
+export PYTHONPATH=${vtkBuildDir}/Wrapping/Python/:${vtkBuildDir}/bin:${PYTHONPATH}
 
 export LD_LIBRARY_PATH=${vtkBuildDir}/bin
 
