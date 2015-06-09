@@ -1,3 +1,5 @@
 temp.py
 *.pyc
 .settings
+temp.py
+connectivtyUtilsPA.py
