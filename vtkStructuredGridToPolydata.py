@@ -83,7 +83,7 @@ def main(*args):
 
 if __name__ == '__main__':
   if len(sys.argv) < 3:
-    print "Usage $0 input output"
+    print 'Usage :   vtkpython', sys.argv[0] ,' input output'
     sys.exit(1)
   sys.exit(main(*sys.argv))
 
