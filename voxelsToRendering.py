@@ -107,7 +107,7 @@ def main(*args):
 
 
   pd.SetPoints(pts)
-  pd.Update()
+#  pd.Update()
   
   
   cube = vtk.vtkCubeSource()
@@ -116,14 +116,14 @@ def main(*args):
   cube.SetZLength(pixdims[2])
   
   glyph = vtk.vtkGlyph3D()
-  glyph.SetInput(pd)
+  glyph.SetInputData(pd)
   glyph.SetSourceConnection(cube.GetOutputPort())
   glyph.ScalingOff()
   glyph.Update()
   
   pdWriter = vtk.vtkPolyDataWriter()
   pdWriter.SetFileName(outputFileName)
-  pdWriter.SetInput(glyph.GetOutput())
+  pdWriter.SetInputData(glyph.GetOutput())
   pdWriter.Update()
   
  
