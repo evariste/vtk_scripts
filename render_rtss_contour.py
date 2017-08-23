@@ -1,11 +1,17 @@
-import dicom
 import sys
+
+if not (sys.version[:3] == '2.7'):
+    print ('Please use Python 2.7 ...')
+    sys.exit(1)
+
+
+import dicom
 import os
 import numpy as np
 
 import argparse
 
-os.sys.path.insert(0, 'D:/Users_D/paul.aljabar.MIRADA-MEDICAL/scripts/python')
+os.sys.path.insert(0, 'D:/scripts/python')
 
 from dicom_keys import *
 
@@ -28,7 +34,9 @@ def clean_roi_names(roiNames):
 
 def main():
 
-    helpText = ('Render RTSS contours for a given organ. Two outputs are generated, one showing per-slice polygons for the contour and one showing glyphs over the points')
+    helpText = ('Render RTSS contours for a given organ. Two outputs are generated, '
+                'one showing per-slice polygons for the contour and one showing '
+                'glyphs over the points')
     parser = argparse.ArgumentParser(description=helpText)
 
     helpText = "Input DICOM RTSS file"
@@ -46,6 +54,7 @@ def main():
     helpText = "Maximum number of points for glyph output, default = 2500, increase or decrease to suit"
     parser.add_argument('-glyph_max_points', type=int, default=2500, help=helpText)
 
+
     args = parser.parse_args()
 
     dcm_rtss_file = args.dcm_file
@@ -60,18 +69,6 @@ def main():
     else:
         output_glyphs = output_polygons + '-glyphs.vtk'
 
-
-    # dcm_rtss_file = 'D:/Users_D/paul.aljabar.MIRADA-MEDICAL/data/Nijmegen/PROSTATE/prostate_3_anon/104836515_4259415179/20160923/1/1.2.826.0.1.3680043.2.135.736415.63184520.7.1490799097.913.96.dcm'
-    # target_label = 'Prostaat'
-
-    # dcm_rtss_file = 'D:/Users_D/paul.aljabar.MIRADA-MEDICAL/projects/aapm_challenge/predictions/stage2_full/iter_last/ct_LCTSC-Test-S2-104-heart.dcm'
-    # dcm_rtss_file = 'D:/Users_D/paul.aljabar.MIRADA-MEDICAL/projects/aapm_challenge/predictions/stage2_full/iter_last/dcm_single/LCTSC-Test-S2-104.dcm'
-    # target_label = 'esoph'
-    # output_polygons = 'pol.vtk'
-    # output_glyphs = 'pol2.vtk'
-
-    # user_scale = 1
-    # max_pts = 2500
 
 
     print('Extracting organ {:s} from file:'.format(target_label))
