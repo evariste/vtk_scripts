@@ -8,6 +8,7 @@
 # vtkBuildDir="/Users/paulaljabar/work/packages/vtk/build-5.10.1-64"
 vtkBuildDir="/Users/paulaljabar/work/packages/vtk/build-6.3.0"
 vtkBuildDir='/d/Users_D/paul.aljabar.MIRADA-MEDICAL/software/pa-builds/VTK-6.3.0-SRC/install'
+vtkBuildDir='/d/software/pa-builds/VTK-6.3.0-SRC/install'
 
 vtk_bin_dir="$vtkBuildDir/bin"
 vtk_lib_dir="$vtkBuildDir/lib"
